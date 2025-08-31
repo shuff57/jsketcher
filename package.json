@@ -28,6 +28,20 @@
     "url": "https://github.com/xibyte/jsketcher/issues"
   },
   "homepage": "https://github.com/xibyte/jsketcher",
+  "overrides": {
+    "@babel/core": {
+      "debug": "^4.3.5"
+    },
+    "@babel/traverse": {
+      "debug": "^4.3.5"
+    },
+    "cypress": {
+      "debug": "^4.3.5"
+    },
+    "@cypress/xvfb": {
+      "debug": "3.2.7"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",
@@ -47,15 +61,16 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "babel-loader": "^8.2.5",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-polyfill": "^6.26.0",
     "concurrently": "^7.3.0",
     "css-loader": "^3.4.2",
     "cypress": "^4.7.0",
     "cypress-wait-until": "^1.7.1",
     "del": "^6.0.0",
-    "eslint": "^8.22.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint": "^9.9.0",
+    "@eslint/js": "^9.9.0",
+    "eslint-plugin-import": "^2.32.0",
+    "@humanwhocodes/config-array": "^0.13.0",
+    "@humanwhocodes/object-schema": "^2.0.3",
     "file-loader": "^6.2.0",
     "glob": "^8.0.3",
     "grunt": "^1.1.0",
@@ -83,7 +98,7 @@
     "immer": "^9.0.12",
     "jsketcher-occ-engine": "1.0.1-5efaf53accb45bac475155fc4d5552642c19e91e",
     "jszip": "^3.10.0",
-    "less": "^3.11.1",
+    "less": "^4.2.0",
     "libtess": "1.2.2",
     "lodash": "^4.17.15",
     "marked": "^4.0.18",
@@ -95,8 +110,10 @@
     "react-dom": "^16.13.1",
     "react-icons": "^4.4.0",
     "react-toastify": "^5.5.0",
-    "sprintf": "0.1.5",
+    "sprintf-js": "^1.1.3",
     "three": "^0.143.0",
-    "browser-xml2js": "^0.4.19"
+    "browser-xml2js": "^0.4.19",
+    "core-js": "^3.38.1",
+    "regenerator-runtime": "^0.14.1"
   }
 }

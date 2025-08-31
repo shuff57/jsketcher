@@ -7,6 +7,7 @@ const glob = require("glob");
 const {marked} = require("marked");
 const Handlebars = require("handlebars");
 const exec = require('child_process').exec;
+const fs = require('fs');
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -85,7 +86,20 @@ module.exports = function(grunt) {
 
   grunt.registerTask('mark-revision', function() {
     const done = this.async();
-    exec('mkdir -p dist && git rev-parse HEAD > dist/.rev', function (err, stdout, stderr) {
+    try {
+      fs.mkdirSync('dist', { recursive: true });
+    } catch (e) {
+      // ignore if exists or cannot create
+    }
+    exec('git rev-parse HEAD', function (err, stdout) {
+      if (!err) {
+        try {
+          fs.writeFileSync('dist/.rev', String(stdout).trim());
+        } catch (e) {
+          // propagate write error
+          return done(e);
+        }
+      }
       done(err);
     });
   });
