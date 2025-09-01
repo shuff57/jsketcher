@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function AdjustableAbs(props) {
-  if (!props.visible) {
+export default function AdjustableAbs({visible = true, zIndex = 100, ...props}) {
+  if (!visible) {
     return null;
   }
-  return <Adjuster {...props}/>
+  return <Adjuster zIndex={zIndex} {...props}/>
 }
 
 export class Adjuster extends React.Component {
@@ -70,10 +70,7 @@ export class Adjuster extends React.Component {
   }
 }
 
-AdjustableAbs.defaultProps = {
-  zIndex: 100,
-  visible: true
-};
+// defaults moved to parameter destructuring
 
 
 

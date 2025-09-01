@@ -1,14 +1,12 @@
 import React from 'react';
 
-export default function Abs({left, top, right, bottom, children, style, zIndex, ...props}) {
+export default function Abs({left, top, right, bottom, children, style, zIndex = 100, ...props}) {
   return <div style={{position: 'absolute', left, top, right, bottom, zIndex, ...style}}  {...props}>
     {children}
   </div>;
 }
 
-Abs.defaultProps = {
-  zIndex: 100,
-};
+// defaults moved to parameter destructuring
 
 
 

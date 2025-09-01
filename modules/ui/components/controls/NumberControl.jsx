@@ -4,7 +4,7 @@ import InputControl from './InputControl';
 
 export default function NumberControl(props) {
 
-  const {onChange, onFocus, value, width, baseStep, round, min, max, accelerator, cycle} = props;
+  const {onChange, onFocus, value, width, baseStep = 1, round = 0, min, max, accelerator = 100, cycle} = props;
 
   const onChangeFromTarget = e => {
     onChange(e.target.value);
@@ -48,8 +48,4 @@ NumberControl.propTypes = {
   value: PropTypes.any
 };
 
-NumberControl.defaultProps = {
-  baseStep: 1,
-  round: 0,
-  accelerator: 100
-};
+// defaults moved to parameter destructuring

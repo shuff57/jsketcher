@@ -1,44 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {useContext, useRef} from 'react';
 
 import ls from './RadioButtons.less';
 
-export default class RadioButtons extends React.Component {
-
-  render() {
-    return <div>{this.props.children}</div>
-  }
-  
-  getChildContext() {
-    return {
-      radioButtonsGroupName: this.groupId,
-      radioButtonsValue: this.props.value,
-      radioButtonsOnChange: this.props.onChange
-    }
-  }
-  
-  groupId = 'group_' + GROUP_COUNTER++;
-}
-
-export function RadioButton({value, label}, {radioButtonsGroupName, radioButtonsValue, radioButtonsOnChange}) {
-  const onChange = e => {
-    radioButtonsOnChange(e.target.value)
-  };
-  label = label || value;
-  return <label className={ls.radioButton}>
-    <input type='radio' name={radioButtonsGroupName} checked={radioButtonsValue === value} 
-           value={value} onChange={onChange}/> {label}
-    
-  </label>
-}
-
-
-RadioButtons.childContextTypes = {
-  radioButtonsGroupName: PropTypes.string.isRequired,
-  radioButtonsValue: PropTypes.string.isRequired,
-  radioButtonsOnChange: PropTypes.func.isRequired
-};
-
-RadioButton.contextTypes = RadioButtons.childContextTypes;
+const RadioButtonsContext = React.createContext({groupName: '', value: undefined, onChange: () => {}});
 
 let GROUP_COUNTER = 0;
+
+export default function RadioButtons({value, onChange, children}) {
+  const groupRef = useRef('group_' + GROUP_COUNTER++);
+  return (
+    <RadioButtonsContext.Provider value={{groupName: groupRef.current, value, onChange}}>
+      <div>{children}</div>
+    </RadioButtonsContext.Provider>
+  );
+}
+
+export function RadioButton({value, label}) {
+  const {groupName, value: selected, onChange} = useContext(RadioButtonsContext);
+  const onChangeHandler = e => onChange(e.target.value);
+  const text = label || value;
+  return (
+    <label className={ls.radioButton}>
+      <input type='radio' name={groupName} checked={selected === value}
+             value={value} onChange={onChangeHandler}/> {text}
+    </label>
+  );
+}
