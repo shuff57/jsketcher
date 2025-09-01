@@ -5,6 +5,8 @@ import {createAppContext} from './sketcher/sketcherContext';
 import {Constraints} from './sketcher/parametric'
 
 import ReactDOM from "react-dom";
+let createRootFn = null;
+try { createRootFn = require('react-dom/client').createRoot; } catch (e) { /* React < 18 */ }
 import {SketcherApp} from "./sketcher/components/SketcherApp";
 import React from "react";
 import {loadUIState, saveUIState} from "./sketcher/uiState";
@@ -122,8 +124,12 @@ function atatchToToolStreams(context) {
 
 
 function startReact(appCtx) {
-
   const reactControls = document.getElementById('react-controls');
+  if (createRootFn) {
+    const root = createRootFn(reactControls);
+    root.render(<Scope><SketcherApp applicationContext={appCtx} /></Scope>);
+    return;
+  }
   ReactDOM.render(
     <Scope><SketcherApp applicationContext={appCtx} /></Scope>,
     reactControls
