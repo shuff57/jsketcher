@@ -1,5 +1,5 @@
 import {DelegatingPanTool} from 'sketcher/tools/pan';
-import {Matrix4} from 'three/src/math/Matrix4';
+import {Matrix4} from 'three';
 import {CAMERA_MODE} from '../scene/viewer';
 import DPR from 'dpr';
 import {createEssentialAppContext} from "sketcher/sketcherContext";

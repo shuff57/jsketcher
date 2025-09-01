@@ -17,7 +17,7 @@ import {
   WebGLRenderer
 } from "three";
 import {Emitter, stream} from "lstream";
-import {Camera} from "three/src/cameras/Camera";
+import type { Camera } from "three";
 
 export default class SceneSetUp {
   workingSphere: number;

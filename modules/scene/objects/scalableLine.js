@@ -1,6 +1,6 @@
-import {LineGeometry} from 'three/examples/jsm/lines/LineGeometry';
-import {LineMaterial} from 'three/examples/jsm/lines/LineMaterial';
-import {LineSegments2} from 'three/examples/jsm/lines/LineSegments2';
+import {LineGeometry} from 'three/addons/lines/LineGeometry.js';
+import {LineMaterial} from 'three/addons/lines/LineMaterial.js';
+import {LineSegments2} from 'three/addons/lines/LineSegments2.js';
 import {Vector2} from 'three';
 import SceneSetUp from "scene/sceneSetup";
 // import {BufferGeometry, BufferAttribute} from "three/src/core/BufferGeometry";
