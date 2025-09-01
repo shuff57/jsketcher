@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const libAssets = require("./build/libAssets");
-const glob = require("glob");
+const fg = require("fast-glob");
 const {marked} = require("marked");
 const Handlebars = require("handlebars");
 const exec = require('child_process').exec;
@@ -116,14 +116,10 @@ module.exports = function(grunt) {
 
     const mainTemplate = Handlebars.compile(grunt.file.read("modules/doc/doc-layout.handlebars"));
 
-    glob("web/docs/**/*.md", function (er, files) {
-
-
+    fg(["web/docs/**/*.md"]).then((files) => {
       const workbenches = new Map();
       files.forEach(file => {
-
         const parts = file.split('/');
-
         const workbenchName = parts[2];
         const operationName = parts[4];
         let workbench = workbenches.get(workbenchName);
@@ -134,17 +130,16 @@ module.exports = function(grunt) {
           };
           workbenches.set(workbenchName, workbench);
         }
-        let link = file.substring(file.indexOf('/') + 1); //drop web prefix
+        let link = file.substring(file.indexOf('/') + 1); // drop web prefix
         workbench.operations.push({
           operationName,
-          href: '../../../../../../'  + convertMdPathToHtml(link)
+          href: '../../../../../../' + convertMdPathToHtml(link)
         });
       });
 
       const sidenav = Array.from(workbenches.values());
 
       files.forEach(file => {
-
         const content = grunt.file.read(file);
         const dest = convertMdPathToHtml(file);
 
@@ -154,10 +149,12 @@ module.exports = function(grunt) {
         });
 
         grunt.file.write(dest, htmlContent);
-
-        console.log("generated "+ dest);
-      })
+        console.log("generated " + dest);
+      });
       done();
+    }).catch(err => {
+      console.error(err);
+      done(false);
     });
   });
 
