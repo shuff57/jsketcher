@@ -59,7 +59,6 @@
     "css-loader": "^7.1.2",
     "cypress": "^15.0.0",
     "cypress-wait-until": "^3.0.2",
-    "del": "^6.0.0",
     "eslint": "^9.34.0",
     "eslint-plugin-import": "^2.32.0",
     "file-loader": "^6.2.0",

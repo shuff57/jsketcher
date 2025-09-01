@@ -1,7 +1,6 @@
 'use strict'
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
-const del = require('del');
 const libAssets = require("./build/libAssets");
 const glob = require("glob");
 const {marked} = require("marked");
@@ -62,7 +61,11 @@ module.exports = function(grunt) {
   });
   
   grunt.registerTask('clean', function() {
-    del.sync('dist');
+    try {
+      fs.rmSync('dist', { recursive: true, force: true });
+    } catch (e) {
+      // ignore
+    }
   });
 
   grunt.registerTask('build', function() {
