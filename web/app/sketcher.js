@@ -1,3 +1,4 @@
+import './react18-warnings-suppress.js';
 import 'ui/styles/global/index.less';
 import '../css/app.less'
 
