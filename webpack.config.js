@@ -59,7 +59,12 @@ module.exports = {
         include: [GLOBAL_CSS, INTEGRATION_TESTS],
         use: [
           'style-loader',
-          'css-loader?-url',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            }
+          },
           'less-loader',
         ]
       },
