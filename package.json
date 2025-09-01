@@ -92,7 +92,7 @@
     "less": "^4.2.0",
     "libtess": "1.2.2",
     "lodash": "^4.17.21",
-    "marked": "^4.0.18",
+    "marked": "^16.2.1",
     "mousetrap": "^1.6.5",
     "numeric": "1.2.6",
     "prop-types": "^15.8.1",

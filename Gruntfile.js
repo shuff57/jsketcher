@@ -3,7 +3,11 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const libAssets = require("./build/libAssets");
 const fg = require("fast-glob");
-const {marked} = require("marked");
+// marked >= v16 is ESM-only; load lazily inside tasks
+let loadMarked = async () => {
+  const m = await import('marked');
+  return m.marked || m.default || m;
+};
 const Handlebars = require("handlebars");
 const exec = require('child_process').exec;
 const fs = require('fs');
@@ -116,7 +120,9 @@ module.exports = function(grunt) {
 
     const mainTemplate = Handlebars.compile(grunt.file.read("modules/doc/doc-layout.handlebars"));
 
-    fg(["web/docs/**/*.md"]).then((files) => {
+    (async () => {
+      const marked = await loadMarked();
+      const files = await fg(["web/docs/**/*.md"]);
       const workbenches = new Map();
       files.forEach(file => {
         const parts = file.split('/');
@@ -152,7 +158,7 @@ module.exports = function(grunt) {
         console.log("generated " + dest);
       });
       done();
-    }).catch(err => {
+    })().catch(err => {
       console.error(err);
       done(false);
     });
