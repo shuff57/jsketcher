@@ -63,6 +63,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               url: false,
+              esModule: false,
             }
           },
           'less-loader',
@@ -73,7 +74,12 @@ module.exports = {
         include: [NODE_MODULES],
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            }
+          },
         ]
       },
       {
@@ -83,7 +89,12 @@ module.exports = {
             include: [path.resolve(MODULES, 'ui/styles/global')],
             use: [
               'style-loader',
-              'css-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  esModule: false,
+                }
+              },
               'less-loader'
             ]
           },
@@ -99,7 +110,8 @@ module.exports = {
                     mode: 'local',
                     getLocalIdent: (context, localIdentName, localName) => generateCSSScopedName(localName, context.resourcePath),
                   },
-                  url: false
+                  url: false,
+                  esModule: false,
                 }
               },
               'less-loader'
