@@ -423,7 +423,7 @@ export function runSandbox(ctx: ApplicationContext) {
 
 
 
-    const oldNodes = new Set();
+    const oldNodes = new Set<any>();
 
     let delta = -5
     function simulate() {
@@ -439,7 +439,7 @@ export function runSandbox(ctx: ApplicationContext) {
       const curNodes = new Set();
 
       oldNodes.forEach(n => {
-        ctx.cadScene.auxGroup.remove(n.visual);
+        ctx.cadScene.auxGroup.remove((n as any).visual);
       });
 
       oldNodes.clear();
@@ -458,7 +458,7 @@ export function runSandbox(ctx: ApplicationContext) {
           cube.position.set(x, y, z);
           ctx.cadScene.auxGroup.add(cube);
           ctx.cadScene.auxGroup.scale.set(10, 10, 10);
-          node.visual = cube;
+          (node as any).visual = cube;
 
           oldNodes.add(node);
         }

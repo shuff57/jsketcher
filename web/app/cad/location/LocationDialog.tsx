@@ -104,6 +104,7 @@ export function LocationDialog() {
     </Folder>
     <Folder title='Rotation'>
       <Group>
+        <></>
         {/*<Field active={false} name='Azimuth'>*/}
         {/*  <Label>Axis Azimuth:</Label>*/}
         {/*  <NumberControl onChange={setAzimuth} value={location.rotationAxisAzimuth / DEG_RAD} />*/}
