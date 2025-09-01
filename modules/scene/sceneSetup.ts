@@ -13,6 +13,7 @@ import {
   PerspectiveCamera,
   Raycaster,
   Scene,
+  Vector2,
   Vector3,
   WebGLRenderer
 } from "three";
@@ -193,7 +194,7 @@ export default class SceneSetUp {
     const x = ( viewX / this.container.clientWidth ) * 2 - 1;
     const y = - ( viewY / this.container.clientHeight ) * 2 + 1;
 
-    const mouse = new Vector3( x, y, 1 );
+    const mouse = new Vector2( x, y );
     raycaster.setFromCamera( mouse, this.camera );
     return raycaster;
   }
