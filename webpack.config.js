@@ -126,15 +126,11 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'raw-loader'
+        type: 'asset/source'
       },
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader'
-          },
-        ],
+        test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset',
       },
     ]
   },
