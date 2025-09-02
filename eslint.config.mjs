@@ -19,6 +19,13 @@ export default [
   // Base JS/JSX config
   {
     files: ["**/*.js", "**/*.jsx"],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: ['./tsconfig.json']
+        }
+      }
+    },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -65,6 +72,13 @@ export default [
   // TypeScript overrides
   {
     files: ["**/*.ts", "**/*.tsx"],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: ['./tsconfig.json']
+        }
+      }
+    },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -90,9 +104,10 @@ export default [
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/no-empty-interface": "off",
-      // import hygiene (keep minimal to avoid false-positives without resolvers)
+      // import hygiene
       "import/newline-after-import": "warn",
       "import/order": ["warn", { "newlines-between": "always" }],
+      "import/no-unresolved": ["warn", { commonjs: true }],
     },
   },
 ];

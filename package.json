@@ -61,6 +61,7 @@
     "cypress": "^15.0.0",
     "cypress-wait-until": "^3.0.2",
     "eslint": "^9.34.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "fast-glob": "^3.3.2",
     "grunt": "^1.6.1",
