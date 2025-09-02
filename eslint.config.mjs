@@ -26,6 +26,7 @@ export default [
         }
       }
     },
+    plugins: { import: importPlugin },
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -66,6 +67,34 @@ export default [
       "no-extra-boolean-cast": "off",
       "no-var": "error",
       "prefer-const": ["error", { destructuring: "all" }],
+      // import hygiene (match TS behavior)
+      "import/newline-after-import": "off",
+      "import/order": "off",
+      "import/no-unresolved": [
+        "warn",
+        {
+          commonjs: true,
+          ignore: [
+            "^raw-loader!",
+            "^!!less-vars-loader"
+          ]
+        }
+      ],
+      "import/no-extraneous-dependencies": [
+        "warn",
+        {
+          devDependencies: [
+            "**/*.test.{js,jsx,ts,tsx}",
+            "**/*.spec.{js,jsx,ts,tsx}",
+            "**/__tests__/**",
+            "**/test/**",
+            "Gruntfile.js",
+            "**/*.config.{js,cjs,ts}",
+            "**/webpack*.{js,cjs,ts}",
+            "scripts/**"
+          ]
+        }
+      ],
     },
   },
 
@@ -104,10 +133,34 @@ export default [
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/no-empty-interface": "off",
-      // import hygiene
-      "import/newline-after-import": "warn",
-      "import/order": ["warn", { "newlines-between": "always" }],
-      "import/no-unresolved": ["warn", { commonjs: true }],
+      // import hygiene (keep signal tight)
+      "import/newline-after-import": "off",
+      "import/order": "off",
+      "import/no-unresolved": [
+        "warn",
+        {
+          commonjs: true,
+          ignore: [
+            "^raw-loader!",
+            "^!!less-vars-loader"
+          ]
+        }
+      ],
+      "import/no-extraneous-dependencies": [
+        "warn",
+        {
+          devDependencies: [
+            "**/*.test.{js,jsx,ts,tsx}",
+            "**/*.spec.{js,jsx,ts,tsx}",
+            "**/__tests__/**",
+            "**/test/**",
+            "Gruntfile.js",
+            "**/*.config.{js,cjs,ts}",
+            "**/webpack*.{js,cjs,ts}",
+            "scripts/**"
+          ]
+        }
+      ],
     },
   },
 ];

@@ -1,4 +1,4 @@
-import {ParseStl} from './stl/stl-reader'
+import { ParseStl } from './stlReader'
 
 export function LoadSTLFromURL(url, solidsConsumer) {
   const xhr = new XMLHttpRequest();

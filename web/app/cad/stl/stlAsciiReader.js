@@ -1,4 +1,4 @@
-import {StlSolid, StlFace} from './stl-data-structure'
+import { StlSolid, StlFace } from './stlDataStructure'
 
 export function parse(buf) {
 

@@ -9,7 +9,7 @@ import {
   PointOnLineConstraintIcon, RadiusConstraintIcon, SymmetryConstraintIcon, TangentConstraintIcon,
   VerticalConstraintIcon
 } from "../icons/constraints/ConstraintIcons";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import {MirrorGeneratorIcon} from "../icons/generators/GeneratorIcons";
 
 export default [

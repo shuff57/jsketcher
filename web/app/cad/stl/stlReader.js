@@ -1,5 +1,5 @@
-import {parse as ParseASCII} from './stl-ascii-reader'
-import {parse as ParseBinary} from './stl-binary-reader'
+import { parse as ParseASCII } from './stlAsciiReader'
+import { parse as ParseBinary } from './stlBinaryReader'
 
 export function ParseStl(buf) {
   if(typeof buf === 'string') {

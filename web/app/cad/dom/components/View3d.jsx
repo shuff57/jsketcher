@@ -17,7 +17,7 @@ import {InplaceSketcher} from "../../sketch/components/InplaceSketcher";
 import {ContextualControls} from "../../../sketcher/components/ContextualControls";
 import {ConstraintEditor} from "../../../sketcher/components/ConstraintEditor";
 import SketcherOperationWizard from "../../../sketcher/components/SketcherOperationWizard";
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {ContributedComponents} from "./ContributedComponents";
 import {SceneInlineObjectExplorer} from "cad/craft/ui/SceneInlineObjectExplorer";
@@ -84,3 +84,4 @@ export default class View3d extends React.Component {
     throw 'big no-no';
   }
 }
+

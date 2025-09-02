@@ -4,7 +4,7 @@ import {ConstraintEditor} from './ConstraintEditor';
 import {ContextualControls} from './ContextualControls';
 import {ConstraintList} from './ConstraintExplorer';
 import {StreamsContext} from 'ui/streamsContext';
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import SketcherOperationWizard from "./SketcherOperationWizard";
 import {Scope} from "./Scope";
@@ -67,3 +67,4 @@ function RightSideControls() {
     <Scope><SketcherOperationWizard /></Scope>
   </React.Fragment>
 }
+

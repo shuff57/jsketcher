@@ -1,6 +1,6 @@
 import constraintActions from "./constraintActions";
 import {getDescription, matchAvailableSubjects, MatchIndex, matchSelection} from "../selectionMatcher";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import operationActions from "./operationActions";
 import constraintGlobalActions from "./constraintGlobalActions";
 import measureActions from "./measureActions";

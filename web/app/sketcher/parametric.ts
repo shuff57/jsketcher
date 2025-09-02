@@ -2,7 +2,7 @@ import {Constraints} from './constraints';
 import {AlgNumConstraint, ConstraintDefinitions} from "./constr/ANConstraints";
 import {AlgNumSubSystem} from "./constr/AlgNumSystem";
 import {state, stream} from 'lstream';
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import {ISolveStage, SolvableObject} from "./constr/solvableObject";
 import {Viewer} from "./viewer2d";
 

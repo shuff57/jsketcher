@@ -132,7 +132,7 @@ const HistoryItem = decoratorChain(
     s.index === index ? EMPTY_OBJECT : {index, locationHint: aboveElement(el)})
 }))
 )
-( // eslint-disable-line no-unexpected-multiline
+(  
 function HistoryItem({index, pointer, modification, getOperation, toggle, selected, disabled, inProgress}) {
   const operation = getOperation(modification.type);
   const appearance = resolveAppearance(operation, modification.params);
