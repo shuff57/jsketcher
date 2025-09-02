@@ -31,8 +31,6 @@ module.exports = {
     extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
     modules: [MODULES, "node_modules", WEB_APP],
     alias: {
-      'react-toastify$': path.resolve(__dirname, 'node_modules/react-toastify/dist/react-toastify.esm.mjs'),
-      'react-toastify/dist/index.mjs$': path.resolve(__dirname, 'node_modules/react-toastify/dist/react-toastify.esm.mjs'),
     }
   },
   devServer: {
