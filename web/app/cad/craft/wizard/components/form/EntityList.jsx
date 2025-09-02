@@ -7,7 +7,7 @@ import {attachToForm} from './Form';
 import {camelCaseSplitToStr} from 'gems/camelCaseSplit';
 import {EMPTY_ARRAY, removeInPlace} from 'gems/iterables';
 import {ReactApplicationContext} from "cad/dom/ReactApplicationContext";
-import produce from "immer";
+import { produce } from "immer";
 import {FiEdit} from "react-icons/fi";
 import {MFace} from "cad/model/mface";
 import {ModelIcon} from "cad/craft/ui/ModelIcon";

@@ -86,7 +86,7 @@
     "core-js": "^3.38.1",
     "earcut": "^2.2.4",
     "font-awesome": "4.7.0",
-    "immer": "^9.0.21",
+    "immer": "^10.1.3",
     "jsketcher-occ-engine": "1.0.1-5efaf53accb45bac475155fc4d5552642c19e91e",
     "jszip": "^3.10.0",
     "less": "^4.2.0",
