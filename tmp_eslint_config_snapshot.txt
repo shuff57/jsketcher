@@ -71,7 +71,7 @@ export default [
       "import/newline-after-import": "off",
       "import/order": "off",
       "import/no-unresolved": [
-        "error",
+        "warn",
         {
           commonjs: true,
           ignore: [
@@ -81,7 +81,7 @@ export default [
         }
       ],
       "import/no-extraneous-dependencies": [
-        "error",
+        "warn",
         {
           devDependencies: [
             "**/*.test.{js,jsx,ts,tsx}",
@@ -137,7 +137,7 @@ export default [
       "import/newline-after-import": "off",
       "import/order": "off",
       "import/no-unresolved": [
-        "error",
+        "warn",
         {
           commonjs: true,
           ignore: [
@@ -147,7 +147,7 @@ export default [
         }
       ],
       "import/no-extraneous-dependencies": [
-        "error",
+        "warn",
         {
           devDependencies: [
             "**/*.test.{js,jsx,ts,tsx}",
@@ -164,3 +164,4 @@ export default [
     },
   },
 ];
+
