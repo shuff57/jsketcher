@@ -3,6 +3,7 @@ import Window from "ui/components/Window";
 import {state} from "lstream";
 import {useStream} from "ui/effects";
 
+// Keep using raw-loader inline to ensure string export
 // @ts-ignore
 import bottleExample from "raw-loader!./bottleExample.txt";
 import {ApplicationContext} from "cad/context";
