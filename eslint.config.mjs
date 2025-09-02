@@ -96,7 +96,7 @@ export default [
         }
       ],
       "import/no-cycle": ["warn", { "maxDepth": 1, "ignoreExternal": true }],
-      "import/no-duplicates": "warn",
+      "import/no-duplicates": "error",
       "no-restricted-imports": [
         "warn",
         {
@@ -175,7 +175,7 @@ export default [
         }
       ],
       "import/no-cycle": ["warn", { "maxDepth": 1, "ignoreExternal": true }],
-      "import/no-duplicates": "warn",
+      "import/no-duplicates": "error",
       "no-restricted-imports": [
         "warn",
         {
