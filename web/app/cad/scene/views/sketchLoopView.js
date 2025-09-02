@@ -1,9 +1,9 @@
 import {View} from './view';
 import * as SceneGraph from 'scene/sceneGraph';
 import {tessellateLoopsOnSurface} from 'cad/tess/brep-tess';
-import {createSolidMaterial} from '../views/viewUtils';
+import {createSolidMaterial,surfaceAndPolygonsToGeom} from '../views/viewUtils';
 import {DoubleSide, Mesh} from 'three';
-import {surfaceAndPolygonsToGeom} from './viewUtils';
+
 import {TriangulatePolygons} from 'cad/tess/triangulation';
 import Vector from 'math/vector';
 import {LOOP} from 'cad/model/entities';

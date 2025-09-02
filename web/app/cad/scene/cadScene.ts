@@ -1,10 +1,10 @@
 import {createArrow} from 'scene/objects/auxiliary';
 import Vector, {AXIS} from 'math/vector';
 import {OnTopOfAll} from 'scene/materialMixins';
-import {moveObject3D} from 'scene/objects/transform';
+import {moveObject3D,setCsysToViewMatrix} from 'scene/objects/transform';
 
 import * as SceneGraph from 'scene/sceneGraph';
-import {setCsysToViewMatrix} from 'scene/objects/transform';
+
 import {Object3D} from "three";
 
 export default class CadScene {

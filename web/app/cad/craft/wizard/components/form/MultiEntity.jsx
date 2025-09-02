@@ -1,7 +1,7 @@
 import React from 'react';
-import {attachToForm} from './Form';
+import {attachToForm,FormContext} from './Form';
 import Stack from 'ui/components/Stack';
-import {FormContext} from './Form';
+
 import mapContext from 'ui/mapContext';
 import PropTypes from 'prop-types';
 import initializeBySchema from '../../../schema/initializeBySchema';

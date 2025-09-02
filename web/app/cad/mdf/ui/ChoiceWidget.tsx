@@ -1,11 +1,11 @@
-import {ComboBoxField} from "cad/craft/wizard/components/form/Fields";
+import {ComboBoxField,RadioButtonsField} from "cad/craft/wizard/components/form/Fields";
 import React from "react";
 import {FieldBasicProps, fieldToSchemaGeneric} from "cad/mdf/ui/field";
 import {Types} from "cad/craft/schema/types";
 import {ComboBoxOption} from "ui/components/controls/ComboBoxControl";
 import {RadioButton} from 'ui/components/controls/RadioButtons';
 
-import {RadioButtonsField} from '../../craft/wizard/components/form/Fields';
+
 
 
 type ValueDef = [string, string] | string;

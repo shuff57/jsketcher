@@ -3,8 +3,8 @@ import {surfaceClosestParam} from '../impl/nurbs-ext';
 import * as vec from 'math/vec';
 import CubicHermiteInterpolation from './cubicHermiteIntepolation';
 import InvertedCurve from './invertedCurve';
-import {genericCurveSplit} from './boundedCurve';
-import BoundedCurve from './boundedCurve';
+import BoundedCurve, {genericCurveSplit} from './boundedCurve';
+
 
 export class IntersectionCurve {
 

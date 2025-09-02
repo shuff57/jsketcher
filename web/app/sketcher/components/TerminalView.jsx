@@ -1,10 +1,10 @@
 import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {useStreamWithUpdater} from "ui/effects";
-import Window from "ui/components/Window";
+import Window, {DIRECTIONS} from "ui/components/Window";
 import {getAllSketcherActions} from "../actions";
 import {memoize} from "lodash/function";
 import ls from './TerminalView.less';
-import {DIRECTIONS} from "ui/components/Window";
+
 import {SketcherAppContext} from "./SketcherAppContext";
 
 export function TerminalView({visible, output, addToOutput, onClose, variantsSupplier, commandProcessor}) {

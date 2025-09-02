@@ -1,9 +1,9 @@
-import {brepFaceToGeom, tessDataToGeom} from './viewUtils';
+import {brepFaceToGeom, tessDataToGeom,createSolidMaterial} from './viewUtils';
 import * as SceneGraph from 'scene/sceneGraph';
 import {SketchObjectView} from './sketchObjectView';
 import {View} from './view';
 import {SketchLoopView} from './sketchLoopView';
-import {createSolidMaterial} from "cad/scene/views/viewUtils";
+
 import {SketchMesh} from "cad/scene/views/shellView";
 import {FACE} from "cad/model/entities";
 import {setAttribute} from "scene/objectData";
