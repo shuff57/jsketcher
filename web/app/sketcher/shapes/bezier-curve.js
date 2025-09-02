@@ -1,7 +1,7 @@
 import {SketchObject} from './sketch-object'
 import {Segment} from './segment'
 
-import * as draw_utils from '../shapes/draw-utils'
+import * as draw_utils from "./draw-utils"
 import {isPointInsidePolygon, polygonOffset, ConvexHull2D} from "geom/euclidean";
 import Vector from "math/vector";
 

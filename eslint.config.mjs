@@ -95,6 +95,8 @@ export default [
           ]
         }
       ],
+      "import/no-deprecated": "warn",
+      "import/no-useless-path-segments": ["warn", { noUselessIndex: true }],
       "import/no-cycle": ["warn", { "maxDepth": 1, "ignoreExternal": true }],
       "import/no-duplicates": "error",
       "no-restricted-imports": [
@@ -174,6 +176,8 @@ export default [
           ]
         }
       ],
+      "import/no-deprecated": "warn",
+      "import/no-useless-path-segments": ["warn", { noUselessIndex: true }],
       "import/no-cycle": ["warn", { "maxDepth": 1, "ignoreExternal": true }],
       "import/no-duplicates": "error",
       "no-restricted-imports": [

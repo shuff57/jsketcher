@@ -1,4 +1,4 @@
-import {runActionOrToastWhyNot, startOperation} from "./index";
+import {runActionOrToastWhyNot, startOperation} from ".";
 import {
   AngleBetweenConstraintIcon, AngleConstraintIcon,
   CoincidentConstraintIcon, DistanceConstraintIcon,
