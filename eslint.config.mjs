@@ -5,6 +5,7 @@ import js from "@eslint/js";
 import babelParser from "@babel/eslint-parser";
 import tsParser from "@typescript-eslint/parser";
 import tseslint from "@typescript-eslint/eslint-plugin";
+import importPlugin from "eslint-plugin-import";
 
 export default [
   {
@@ -73,7 +74,7 @@ export default [
         project: false,
       },
     },
-    plugins: { "@typescript-eslint": tseslint },
+    plugins: { "@typescript-eslint": tseslint, import: importPlugin },
     rules: {
       "comma-dangle": "off",
       "no-unused-vars": "off",
@@ -89,6 +90,9 @@ export default [
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/no-empty-interface": "off",
+      // import hygiene (keep minimal to avoid false-positives without resolvers)
+      "import/newline-after-import": "warn",
+      "import/order": ["warn", { "newlines-between": "always" }],
     },
   },
 ];

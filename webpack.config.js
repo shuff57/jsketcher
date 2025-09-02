@@ -121,8 +121,7 @@ module.exports = {
       },
       {
         test: /\.wasm$/,
-        type: "javascript/auto",
-        loader: "file-loader"
+        type: 'asset/resource'
       },
       {
         test: /\.svg$/,
