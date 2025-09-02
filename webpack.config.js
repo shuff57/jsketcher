@@ -31,6 +31,10 @@ module.exports = {
     extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
     modules: [MODULES, "node_modules", WEB_APP],
     alias: {
+    },
+    fallback: {
+      buffer: require.resolve('buffer/'),
+      process: require.resolve('process/browser')
     }
   },
   devServer: {
@@ -145,5 +149,11 @@ module.exports = {
   },
   node: {
     __dirname: true
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+      process: ['process']
+    })
+  ]
 };
