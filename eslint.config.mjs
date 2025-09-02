@@ -95,6 +95,17 @@ export default [
           ]
         }
       ],
+      "no-restricted-imports": [
+        "warn",
+        {
+          patterns: [
+            {
+              group: ["three/src/*"],
+              message: "Avoid deep 'three/src' imports; use the public 'three' API."
+            }
+          ]
+        }
+      ],
     },
   },
 
@@ -158,6 +169,17 @@ export default [
             "**/*.config.{js,cjs,ts}",
             "**/webpack*.{js,cjs,ts}",
             "scripts/**"
+          ]
+        }
+      ],
+      "no-restricted-imports": [
+        "warn",
+        {
+          patterns: [
+            {
+              group: ["three/src/*"],
+              message: "Avoid deep 'three/src' imports; use the public 'three' API."
+            }
           ]
         }
       ],
