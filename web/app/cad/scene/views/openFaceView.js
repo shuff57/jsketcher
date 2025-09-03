@@ -2,7 +2,7 @@ import {setAttribute} from 'scene/objectData';
 import {FACE, SHELL} from 'cad/model/entities';
 import {SketchingView} from './faceView';
 import {View} from './view';
-import {SketchMesh} from './shellView';
+import {SketchMesh} from './sketchMesh';
 import {BufferAttribute, BufferGeometry} from 'three';
 import * as vec from "math/vec";
 import {normalOfCCWSeq} from "cad/cad-utils";

@@ -10,6 +10,7 @@ import {createBoundingSurface} from "../brep-builder";
 import BREP_DEBUG from '../debug/brep-debug';
 import {Face} from "../topo/face";
 import {vectorsEqual} from "math/equality";
+import {isOnPositiveHalfPlaneFromVec} from "../utils/geometryUtils";
 
 
 const A = 0, B = 1;
@@ -931,10 +932,6 @@ function splitEdgeByVertex(edge, vertex) {
   }
   
   return [edge1, edge2];
-}
-
-export function isOnPositiveHalfPlaneFromVec(vec, testee, normal) {
-  return vec.cross(testee).dot(normal) > 0;
 }
 
 export function isInsideEnclose(normal, testee, inVec, outVec, strict){

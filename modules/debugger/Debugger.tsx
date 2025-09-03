@@ -3,9 +3,9 @@ import Window from "ui/components/Window";
 import {state} from "lstream";
 import {useStream} from "ui/effects";
 
-// Keep using raw-loader inline to ensure string export
+// Import example code as text via Webpack 5 asset/source
 // @ts-ignore
-import bottleExample from "raw-loader!./bottleExample.txt";
+import bottleExample from "./bottleExample.txt";
 import {ApplicationContext} from "cad/context";
 import {ReactApplicationContext} from "cad/dom/ReactApplicationContext";
 

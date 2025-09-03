@@ -5,7 +5,7 @@ import {Shell} from "brep/topo/shell";
 
 
 export function pullFace(face: Face, dist: number) {
-  const map = mapVertices(face.shell);
+  const map = mapVertices(face.shell as Shell);
   const dir = face.surface.normalInMiddle();
   for (const edge of face.edges) {
 

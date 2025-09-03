@@ -4,7 +4,7 @@ import {SketchObjectView} from './sketchObjectView';
 import {View} from './view';
 import {SketchLoopView} from './sketchLoopView';
 
-import {SketchMesh} from "cad/scene/views/shellView";
+import SketchMesh from "./sketchMesh";
 import {FACE} from "cad/model/entities";
 import {setAttribute} from "scene/objectData";
 import {ViewMode} from "cad/scene/viewer";

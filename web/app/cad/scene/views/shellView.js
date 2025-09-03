@@ -4,7 +4,6 @@ import {getAttribute, setAttribute} from 'scene/objectData';
 import {FaceView, SELECTION_COLOR} from './faceView';
 import {EdgeView} from './edgeView';
 import {FACE, LOOP, SHELL} from '../../model/entities';
-import {Mesh} from 'three';
 import {VertexView} from "./vertexView";
 import {MSketchLoop} from "cad/model/mloop";
 
@@ -79,10 +78,4 @@ export class ShellView extends View {
   }
 }
 
-export class SketchMesh extends Mesh {
-  
-  constructor(geometry, material) {
-    super(geometry, material);
-  }
-
-}
+// SketchMesh moved to ./sketchMesh to break circular dependency with faceView

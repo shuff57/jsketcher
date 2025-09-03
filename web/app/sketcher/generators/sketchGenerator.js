@@ -2,7 +2,7 @@ import {NOOP} from "gems/func";
 import {MirrorGeneratorSchema} from "./mirrorGenerator";
 import {memoize} from "lodash/function";
 import {indexArray} from "gems/iterables";
-import {PREDEFINED_LAYERS} from "../viewer2d";
+import {PREDEFINED_LAYERS} from "../constants";
 
 const SCHEMAS = [
   MirrorGeneratorSchema,

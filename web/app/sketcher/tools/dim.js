@@ -11,7 +11,7 @@ import {Tool} from './tool'
 import {DragTool} from "./drag";
 import {isInstanceOf} from "../actions/matchUtils";
 import {Segment} from "../shapes/segment";
-import {DEFAULT_SEARCH_BUFFER} from "../viewer2d";
+import {DEFAULT_SEARCH_BUFFER} from "../constants";
 import {_negate, cross2d} from "math/vec";
 import {distance} from "math/distance";
 

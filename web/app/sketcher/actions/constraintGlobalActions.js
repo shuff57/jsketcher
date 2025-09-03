@@ -1,4 +1,3 @@
-import {runActionOrToastWhyNot, startOperation} from ".";
 import {
   AngleBetweenConstraintIcon, AngleConstraintIcon,
   CoincidentConstraintIcon, DistanceConstraintIcon,
@@ -12,239 +11,243 @@ import {
 import { toast } from "react-toastify";
 import {MirrorGeneratorIcon} from "../icons/generators/GeneratorIcons";
 
-export default [
+// Factory function to create constraint global actions with utility functions
+export function createConstraintGlobalActions(runActionOrToastWhyNot, startOperation) {
+  return [
+    {
+      id: 'CoincidentGlobal',
+      shortName: 'Coincident',
+      kind: 'Constraint',
+      description: 'point coincident constraint',
+      icon: CoincidentConstraintIcon,
 
-  {
-    id: 'CoincidentGlobal',
-    shortName: 'Coincident',
-    kind: 'Constraint',
-    description: 'point coincident constraint',
-    icon: CoincidentConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Coincident', ctx,)
-    }
-  },
-
-  {
-    id: 'VerticalGlobal',
-    shortName: 'Vertical',
-    kind: 'Constraint',
-    description: 'vertical constraint',
-    icon: VerticalConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Vertical', ctx);
-    }
-  },
-
-  {
-    id: 'HorizontalGlobal',
-    shortName: 'Horizontal',
-    kind: 'Constraint',
-    description: 'horizontal constraint',
-    icon: HorizontalConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Horizontal', ctx);
-    }
-  },
-
-  {
-    id: 'ParallelGlobal',
-    shortName: 'Parallel',
-    kind: 'Constraint',
-    description: 'parallel constraint',
-    icon: ParallelConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Parallel', ctx);
-    }
-  },
-
-  {
-    id: 'PerpendicularGlobal',
-    shortName: 'Perpendicular',
-    kind: 'Constraint',
-    description: 'perpendicular constraint',
-    icon: PerpendicularConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Perpendicular', ctx);
-    }
-  },
-
-  {
-    id: 'DistancePLGlobal',
-    shortName: 'Point to Line Distance',
-    kind: 'Constraint',
-    description: 'distance between point and line',
-    icon: DistancePLConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('DistancePL', ctx);
-    }
-  },
-
-  {
-    id: 'DistanceGlobal',
-    shortName: 'Point to Point Distance',
-    kind: 'Constraint',
-    description: 'distance between two points',
-    icon: DistanceConstraintIcon,
-
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('DistancePP', ctx);
-    }
-  },
-
-  {
-    id: 'EntityEqualityGlobal',
-    shortName: 'Entity Equality',
-    kind: 'Constraint',
-    description: 'equal length or equal radius',
-    icon: EqualConstraintIcon,
-
-    invoke: (ctx) => {
-      const fail1 = runActionOrToastWhyNot('EqualRadius', ctx, true);
-      const fail2 = runActionOrToastWhyNot('EqualLength', ctx, true);
-      if (fail1 && fail2) {
-        toast('Requires selection of either segments or circles and arcs');
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Coincident', ctx,)
       }
-    }
-  },
+    },
 
-  {
-    id: 'PointOnLineGlobal',
-    shortName: 'Point On Line',
-    kind: 'Constraint',
-    description: 'point on line',
-    icon: PointOnLineConstraintIcon,
+    {
+      id: 'VerticalGlobal',
+      shortName: 'Vertical',
+      kind: 'Constraint',
+      description: 'vertical constraint',
+      icon: VerticalConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('PointOnLine', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Vertical', ctx);
+      }
+    },
 
-  {
-    id: 'TangentGlobal',
-    shortName: 'Tangent',
-    kind: 'Constraint',
-    description: 'tangent between different curves',
-    icon: TangentConstraintIcon,
+    {
+      id: 'HorizontalGlobal',
+      shortName: 'Horizontal',
+      kind: 'Constraint',
+      description: 'horizontal constraint',
+      icon: HorizontalConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Tangent', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Horizontal', ctx);
+      }
+    },
 
-  {
-    id: 'RadiusGlobal',
-    shortName: 'Radius',
-    kind: 'Constraint',
-    description: 'radius of a circle or arc',
-    icon: RadiusConstraintIcon,
+    {
+      id: 'ParallelGlobal',
+      shortName: 'Parallel',
+      kind: 'Constraint',
+      description: 'parallel constraint',
+      icon: ParallelConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('RadiusLength', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Parallel', ctx);
+      }
+    },
 
-  {
-    id: 'PointOnCurveGlobal',
-    shortName: 'Point On Curve',
-    kind: 'Constraint',
-    description: 'point on curve',
-    icon: PointOnCurveConstraintIcon,
+    {
+      id: 'PerpendicularGlobal',
+      shortName: 'Perpendicular',
+      kind: 'Constraint',
+      description: 'perpendicular constraint',
+      icon: PerpendicularConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('PointOnCircle', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Perpendicular', ctx);
+      }
+    },
 
-  {
-    id: 'PointInMiddleGlobal',
-    shortName: 'Point In Middle',
-    kind: 'Constraint',
-    description: 'point in middle',
-    icon: PointInMiddleConstraintIcon,
+    {
+      id: 'DistancePLGlobal',
+      shortName: 'Point to Line Distance',
+      kind: 'Constraint',
+      description: 'distance between point and line',
+      icon: DistancePLConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('PointInMiddle', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('DistancePL', ctx);
+      }
+    },
 
-  {
-    id: 'SymmetryGlobal',
-    shortName: 'Symmetry',
-    kind: 'Constraint',
-    description: 'symmetry',
-    icon: SymmetryConstraintIcon,
+    {
+      id: 'DistanceGlobal',
+      shortName: 'Point to Point Distance',
+      kind: 'Constraint',
+      description: 'distance between two points',
+      icon: DistanceConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Symmetry', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('DistancePP', ctx);
+      }
+    },
 
-  {
-    id: 'AngleBetweenGlobal',
-    shortName: 'Angle Between',
-    kind: 'Constraint',
-    description: 'angle between',
-    icon: AngleBetweenConstraintIcon,
+    {
+      id: 'EntityEqualityGlobal',
+      shortName: 'Entity Equality',
+      kind: 'Constraint',
+      description: 'equal length or equal radius',
+      icon: EqualConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('AngleBetween', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        const fail1 = runActionOrToastWhyNot('EqualRadius', ctx, true);
+        const fail2 = runActionOrToastWhyNot('EqualLength', ctx, true);
+        if (fail1 && fail2) {
+          toast('Requires selection of either segments or circles and arcs');
+        }
+      }
+    },
 
-  {
-    id: 'AngleGlobal',
-    shortName: 'Angle',
-    kind: 'Constraint',
-    description: 'angle of a line',
-    icon: AngleConstraintIcon,
+    {
+      id: 'PointOnLineGlobal',
+      shortName: 'Point On Line',
+      kind: 'Constraint',
+      description: 'point on line',
+      icon: PointOnLineConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Angle', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('PointOnLine', ctx);
+      }
+    },
 
-  {
-    id: 'LockGlobal',
-    shortName: 'Lock',
-    kind: 'Constraint',
-    description: 'locks a point',
-    icon: LockConstraintIcon,
+    {
+      id: 'TangentGlobal',
+      shortName: 'Tangent',
+      kind: 'Constraint',
+      description: 'tangent between different curves',
+      icon: TangentConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Lock', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Tangent', ctx);
+      }
+    },
 
-  {
-    id: 'FilletGlobal',
-    shortName: 'Fillet',
-    kind: 'Constraint',
-    description: 'make a fillet',
-    icon: FilletConstraintIcon,
+    {
+      id: 'RadiusGlobal',
+      shortName: 'Radius',
+      kind: 'Constraint',
+      description: 'radius of a circle or arc',
+      icon: RadiusConstraintIcon,
 
-    invoke: (ctx) => {
-      runActionOrToastWhyNot('Fillet', ctx);
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('RadiusLength', ctx);
+      }
+    },
 
-  {
-    id: 'MirrorStart',
-    shortName: 'Mirror',
-    kind: 'Constraint',
-    description: 'adds mirror generator',
-    icon: MirrorGeneratorIcon,
+    {
+      id: 'PointOnCurveGlobal',
+      shortName: 'Point On Curve',
+      kind: 'Constraint',
+      description: 'point on curve',
+      icon: PointOnCurveConstraintIcon,
 
-    invoke: (ctx) => {
-      startOperation(ctx, 'Mirror');
-    }
-  },
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('PointOnCircle', ctx);
+      }
+    },
 
-]
+    {
+      id: 'PointInMiddleGlobal',
+      shortName: 'Point In Middle',
+      kind: 'Constraint',
+      description: 'point in middle',
+      icon: PointInMiddleConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('PointInMiddle', ctx);
+      }
+    },
+
+    {
+      id: 'SymmetryGlobal',
+      shortName: 'Symmetry',
+      kind: 'Constraint',
+      description: 'symmetry',
+      icon: SymmetryConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Symmetry', ctx);
+      }
+    },
+
+    {
+      id: 'AngleBetweenGlobal',
+      shortName: 'Angle Between',
+      kind: 'Constraint',
+      description: 'angle between',
+      icon: AngleBetweenConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('AngleBetween', ctx);
+      }
+    },
+
+    {
+      id: 'AngleGlobal',
+      shortName: 'Angle',
+      kind: 'Constraint',
+      description: 'angle of a line',
+      icon: AngleConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Angle', ctx);
+      }
+    },
+
+    {
+      id: 'LockGlobal',
+      shortName: 'Lock',
+      kind: 'Constraint',
+      description: 'locks a point',
+      icon: LockConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Lock', ctx);
+      }
+    },
+
+    {
+      id: 'FilletGlobal',
+      shortName: 'Fillet',
+      kind: 'Constraint',
+      description: 'make a fillet',
+      icon: FilletConstraintIcon,
+
+      invoke: (ctx) => {
+        runActionOrToastWhyNot('Fillet', ctx);
+      }
+    },
+
+    {
+      id: 'MirrorStart',
+      shortName: 'Mirror',
+      kind: 'Constraint',
+      description: 'adds mirror generator',
+      icon: MirrorGeneratorIcon,
+
+      invoke: (ctx) => {
+        startOperation(ctx, 'Mirror');
+      }
+    },
+  ];
+}
+
+// Default export for backward compatibility - will be replaced by index.js
+export default [];
 

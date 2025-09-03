@@ -1,5 +1,5 @@
 import {TopoObject} from './topo-object'
-import {Face} from "./face";
+import {IFace} from "./types";
 import {BrepSurface} from "geom/surfaces/brepSurface";
 import {HalfEdge} from "./edge";
 import {findLowestLeftPoint} from "geom/euclidean";
@@ -7,14 +7,14 @@ import {Vertex} from "brep/topo/vertex";
 
 export class Loop extends TopoObject {
 
-  face: Face;
+  face: IFace;
   halfEdges: HalfEdge[];
 
   encloses = {
     [Symbol.iterator]: () => enclosesGenerator(this.halfEdges)
   };
 
-  constructor(face: Face) {
+  constructor(face: IFace) {
     super();
     this.face = face;
     this.halfEdges = [];

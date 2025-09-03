@@ -1,7 +1,10 @@
 import {Tool} from './tool'
 import {Graph} from '../../utils/graph'
 import {Styles} from '../styles'
-import {DEFAULT_SEARCH_BUFFER} from "../viewer2d";
+import {Segment} from "../shapes/segment";
+import {Arc} from "../shapes/arc";
+import {Circle} from "../shapes/circle";
+import {DEFAULT_SEARCH_BUFFER} from "../constants";
 
 export class LoopPickTool extends Tool {
 

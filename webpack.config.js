@@ -135,11 +135,7 @@ module.exports = {
       },
       {
         test: /\.txt$/,
-        use: [
-          {
-            loader: 'raw-loader'
-          }
-        ]
+        type: 'asset/source'
       },
       {
         test: /\.(png|jpe?g|gif)$/i,

@@ -2,16 +2,16 @@ import {TopoObject} from './topo-object'
 import {Loop} from './loop'
 import PIP from '../../../web/app/cad/tess/pip';
 import {veq} from "geom/tolerance";
-import {isOnPositiveHalfPlaneFromVec} from "../operations/boolean";
+import {isOnPositiveHalfPlaneFromVec} from "../utils/geometryUtils";
 import {BrepSurface} from "geom/surfaces/brepSurface";
-import {Shell} from "./shell";
+import {IShell} from "./types";
 import {HalfEdge} from "brep/topo/edge";
 
 export class Face extends TopoObject {
 
 
   surface: BrepSurface;
-  shell: Shell;
+  shell: IShell;
   outerLoop: Loop;
   innerLoops: Loop[];
   private __2d: any;

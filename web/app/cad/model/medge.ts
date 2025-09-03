@@ -20,11 +20,11 @@ export class MEdge extends MObject {
 
   get adjacentFaces() {
     const out = [];
-    let face = this.shell.brepRegistry.get(this.brepEdge.halfEdge1 && this.brepEdge.halfEdge1.loop.face);
+    let face = this.shell.brepRegistry.get(this.brepEdge.halfEdge1 && this.brepEdge.halfEdge1.loop.face as TopoObject);
     if (face) {
       out.push(face);
     }
-    face = this.shell.brepRegistry.get(this.brepEdge.halfEdge2 && this.brepEdge.halfEdge2.loop.face);
+    face = this.shell.brepRegistry.get(this.brepEdge.halfEdge2 && this.brepEdge.halfEdge2.loop.face as TopoObject);
     if (face) {
       out.push(face);
     }

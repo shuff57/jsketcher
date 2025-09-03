@@ -2,7 +2,7 @@ import constraintActions from "./constraintActions";
 import {getDescription, matchAvailableSubjects, MatchIndex, matchSelection} from "../selectionMatcher";
 import { toast } from "react-toastify";
 import operationActions from "./operationActions";
-import constraintGlobalActions from "./constraintGlobalActions";
+import {createConstraintGlobalActions} from "./constraintGlobalActions";
 import measureActions from "./measureActions";
 import objectToolActions from "./objectToolActions";
 import commonActions from "./commonActions";
@@ -16,6 +16,40 @@ function initIfNeeded() {
   if (ALL_CONTEXTUAL_ACTIONS) {
     return;
   }
+  
+  // Create local action utilities to avoid circular dependency
+  function runActionOrToastWhyNot(actionId, ctx, silent) {
+    const selection = ctx.viewer.selected;
+    const action = index[actionId];
+    if (action) {
+      const matched = matchSelection(action.selectionMatcher, new MatchIndex(selection), false);
+      if (matched) {
+        action.invoke(ctx, matched)
+      } else {
+        const msg = 'The action "' + action.shortName + ' ' + action.kind + '" requires selection of ' +  getDescription(action.selectionMatcher);
+        if (silent) {
+          return msg;
+        } else {
+          toast(msg);
+        }
+      }
+    }
+  }
+
+  function startOperation(ctx, actionId) {
+    const action = index[actionId];
+    if (action && action.wizard) {
+      ctx.ui.$wizardRequest.next({
+        title: action.shortName,
+        schema: action.wizard,
+        onApply: (params) => action.invoke(ctx, params)
+      })
+    }
+  }
+
+  // Create constraint global actions with utility functions
+  const constraintGlobalActions = createConstraintGlobalActions(runActionOrToastWhyNot, startOperation);
+
   ALL_CONTEXTUAL_ACTIONS = [
     ...constraintActions,
     ...operationActions,
@@ -61,38 +95,4 @@ export function getAllSketcherActions() {
 export function getSketcherActionIndex() {
   initIfNeeded();
   return index;
-}
-
-//For backward compatibility
-export function runActionOrToastWhyNot(actionId, ctx, silent) {
-  initIfNeeded();
-  const selection = ctx.viewer.selected;
-  const action = index[actionId];
-  if (action) {
-    const matched = matchSelection(action.selectionMatcher, new MatchIndex(selection), false);
-    if (matched) {
-      action.invoke(ctx, matched)
-    } else {
-
-      const msg = 'The action "' + action.shortName + ' ' + action.kind + '" requires selection of ' +  getDescription(action.selectionMatcher);
-      if (silent) {
-        return msg;
-      } else {
-        toast(msg);
-      }
-    }
-  }
-}
-
-export function startOperation(ctx, actionId) {
-  initIfNeeded();
-  const action = index[actionId];
-  if (action.wizard) {
-    ctx.ui.$wizardRequest.next({
-      title: action.shortName,
-      schema: action.wizard,
-      onApply: (params) => action.invoke(ctx, params)
-    })
-  }
-
 }

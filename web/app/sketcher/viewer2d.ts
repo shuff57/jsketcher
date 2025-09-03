@@ -19,6 +19,7 @@ import {SketchGenerator} from "./generators/sketchGenerator";
 import {Generator} from "./id-generator";
 import {Matrix3x4} from "math/matrix";
 import {Label} from "sketcher/shapes/label";
+import {DEFAULT_SEARCH_BUFFER, PREDEFINED_LAYERS} from "./constants";
 
 export class Viewer {
 
@@ -683,12 +684,5 @@ const CAPTURES = {
 };
 
 const measurer = {x: 0, y: 0, z: 0};
-
-export const DEFAULT_SEARCH_BUFFER = 20;
-
-export const PREDEFINED_LAYERS = {
-  SKETCH: "sketch",
-  GROUND: "ground",
-};
 
 export {Styles};
