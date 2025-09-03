@@ -8,6 +8,13 @@ export default [
               'NativeFormatImportAs', '-', 'CloneCurrentProject', '-', 'ReassignSketch']
   },
   {
+    id: 'sketch',
+    label: 'sketch',
+    cssIcons: ['pencil'],
+    info: 'sketch and datum creation tools',
+    actions: ['DATUM_CREATE', 'PLANE', 'EditFace']
+  },
+  {
     id: 'craft',
     cssIcons: ['magic'],
     info: 'set of available craft operations on a solid',

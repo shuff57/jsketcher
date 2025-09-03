@@ -65,7 +65,7 @@ export const ModelerWorkspace: WorkbenchConfig = {
   ],
   ui: {
     toolbar: [
-      'DATUM_CREATE', 'PLANE', 'EditFace', '-',
+      'menu.sketch', '-',
 
       "EXTRUDE", "CUT", "REVOLVE", "LOFT", "SWEEP", "-",
 
