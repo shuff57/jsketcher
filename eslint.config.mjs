@@ -75,8 +75,7 @@ export default [
         {
           commonjs: true,
           ignore: [
-            "^raw-loader!",
-            "^!!less-vars-loader"
+            "^raw-loader!"
           ]
         }
       ],
@@ -156,8 +155,7 @@ export default [
         {
           commonjs: true,
           ignore: [
-            "^raw-loader!",
-            "^!!less-vars-loader"
+            "^raw-loader!"
           ]
         }
       ],
