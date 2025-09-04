@@ -39,6 +39,8 @@ export default class View3d extends React.Component {
           <div className={ls.headsUp}>
             <HeadsUpToolbar/>
             <HeadsUpHelper/>
+            <PlugableControlBar/>
+            <CameraControl />
           </div>
 
           <div className={ls.middleSection + ' small-typography'}>
@@ -69,9 +71,7 @@ export default class View3d extends React.Component {
           </div>
 
           <div className={ls.bottomStack}>
-            <CameraControl />
             <HistoryTimeline />
-            <PlugableControlBar/>
           </div>
           
         </div>

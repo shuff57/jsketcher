@@ -39,6 +39,8 @@
 .headsUp {
   display: flex;
   flex-direction: column;
+  order: 1;
+  pointer-events: auto;
 }
 
 .middleSection {
@@ -46,6 +48,7 @@
   align-items: flex-start;
   flex-grow: 1;
   overflow: hidden;
+  order: 2;
 }
 
 .overlayingPanel {
@@ -77,4 +80,5 @@
   flex-direction: column;
   position: relative;
   pointer-events: auto;
+  order: 3;
 }
