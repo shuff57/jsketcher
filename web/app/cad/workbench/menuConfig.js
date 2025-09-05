@@ -25,7 +25,23 @@ export default [
     label: 'add',
     cssIcons: ['cube'],
     info: 'set of available solid creation operations',
-    actions: ['PLANE', "primitive_cylinder", "primitive_box", "primitive_cone", "primitive_sphere", "primitive_torus"]
+    actions: [
+      // New Sketch
+      'PLANE',
+      // Craft operations
+      'EXTRUDE', 'REVOLVE', 'SWEEP', 'HOLE_TOOL', '-',
+      // Primitive solids
+      'BOX', 'CYLINDER', 'SPHERE', 'TORUS', '-',
+      // Pattern (opens submenu) and mirror
+      'menu.pattern', 'MIRROR_BODY'
+    ]
+  },
+  {
+    id: 'pattern',
+    label: 'pattern',
+    cssIcons: ['th'],
+    info: 'choose a pattern type',
+    actions: ['PATTERN_LINEAR', 'PATTERN_RADIAL']
   },
   {
     id: 'views',
