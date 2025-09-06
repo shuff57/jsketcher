@@ -65,8 +65,6 @@ export const ModelerWorkspace: WorkbenchConfig = {
   ],
   ui: {
     toolbar: [
-      'menu.sketch', '-',
-
       "EXTRUDE", "CUT", "REVOLVE", "LOFT", "SWEEP", "-",
 
       "BOOLEAN", "UNION", "SUBTRACT", "INTERSECT", "-",

@@ -12,7 +12,8 @@ export default [
     label: 'sketch',
     cssIcons: ['pencil'],
     info: 'sketch and datum creation tools',
-    actions: ['DATUM_CREATE', 'PLANE', 'EditFace']
+  // Moved to the 'primitives' (Create) menu for consolidation
+  actions: []
   },
   {
     id: 'craft',
@@ -26,8 +27,8 @@ export default [
     cssIcons: ['cube'],
     info: 'set of available solid creation operations',
     actions: [
-      // New Sketch
-      'PLANE',
+  // Sketch & Datum tools (moved from sketch menu)
+  'DATUM_CREATE', 'PLANE', 'EditFace', '-',
       // Craft operations
       'EXTRUDE', 'REVOLVE', 'SWEEP', 'HOLE_TOOL', '-',
       // Primitive solids
@@ -42,6 +43,46 @@ export default [
     cssIcons: ['th'],
     info: 'choose a pattern type',
     actions: ['PATTERN_LINEAR', 'PATTERN_RADIAL']
+  },
+  {
+    id: 'modify',
+  label: 'modify',
+    cssIcons: ['wrench'],
+  info: 'body modification operations',
+    actions: [
+      // Feature modifiers
+      'SHELL_TOOL', 'FILLET_TOOL', 'SCALE_BODY', 'DEFEATURE_REMOVE_FACE', '-',
+      // Transforms & patterns
+      'MIRROR_BODY', 'MOVE_BODY', '-', 'menu.pattern'
+    ]
+  },
+  {
+    id: 'construct',
+    label: 'construct',
+    cssIcons: ['puzzle-piece'],
+    info: 'boolean construction operations',
+    actions: [ 'BOOLEAN', 'UNION', 'SUBTRACT', 'INTERSECT' ]
+  },
+  {
+    id: 'inspect',
+    label: 'inspect',
+    cssIcons: ['search'],
+    info: 'inspection and analysis tools',
+    actions: [ 'GET_INFO', 'WIRE_LINE' ]
+  },
+  {
+    id: 'transform',
+    label: 'transform',
+    cssIcons: ['arrows'],
+    info: 'transform and pattern operations',
+    actions: [ 'MIRROR_BODY', 'MOVE_BODY', '-', 'menu.pattern' ]
+  },
+  {
+    id: 'insert',
+    label: 'insert',
+    cssIcons: ['plus'],
+    info: 'import and body management',
+    actions: [ 'IMPORT_MODEL', 'DELETE_BODY' ]
   },
   {
     id: 'views',

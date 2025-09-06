@@ -7,3 +7,13 @@ export const menuAboveElementHint = el => {
     y: document.documentElement.clientHeight - top
   });
 };
+
+export const menuBelowElementMatchWidthHint = el => {
+  const {bottom, left, width} = el.getBoundingClientRect();
+  return ({
+    orientationUp: false,
+    x: left,
+    y: bottom,
+    width
+  });
+};

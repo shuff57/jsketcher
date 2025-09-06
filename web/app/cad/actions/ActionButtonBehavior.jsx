@@ -17,8 +17,9 @@ export function ActionButtonBehavior({children, actionId}) {
 
   const actionService = ctx.actionService;
 
-  return children({
+  const api = {
     'data-action-id': actionId,
+    invoke: (hints) => actionService.run(actionId, hints || {}),
     onClick: e => {
       canceled = true;
       actionService.run(actionId, e);
@@ -41,5 +42,6 @@ export function ActionButtonBehavior({children, actionId}) {
         actionService.showHintFor(null)
       }
     }
-  });
+  };
+  return children(api);
 }

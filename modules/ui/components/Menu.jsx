@@ -8,11 +8,12 @@ import Fa from './Fa';
 import {UISystemContext} from "../../../web/app/cad/dom/components/UISystem";
 import {useStream} from "../effects";
 
-export default function Menu({children, x, y, orientationUp, centered, menuId, ...props}) {
+export default function Menu({children, x, y, orientationUp, centered, menuId, width, ...props}) {
   return <AuxWidget 
     className={cx(ls.root, 'disable-selection', 'small-typography')}
     zIndex={500}
     left={x}
+  width={width}
     top={orientationUp ? undefined : y}
     bottom={orientationUp ? y : undefined}
     centered={centered}
