@@ -12,8 +12,8 @@ export default function Toolbar({children, className, size, medium, vertical, fl
   </div>;
 }
 
-export function ToolbarButton({children, disabled, ...props}) {
-  return <div className={cx(ls.button, disabled && ls.disabled)} {...props}>
+export function ToolbarButton({children, disabled, className, ...props}) {
+  return <div className={cx(ls.button, disabled && ls.disabled, className)} {...props}>
     {children}
   </div>;
 }

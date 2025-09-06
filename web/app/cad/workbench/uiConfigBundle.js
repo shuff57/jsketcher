@@ -8,6 +8,7 @@ import Expressions from '../expressions/Expressions';
 import {SelectionView} from "../dom/components/SelectionView";
 import {GrSelect} from "react-icons/gr";
 import {Explorer} from "cad/dom/components/Explorer";
+import {FaUndo, FaRedo} from 'react-icons/fa';
 
 export const BundleName = "@UIConfig";
 
@@ -39,15 +40,11 @@ export function activate(ctx) {
 }
 
 function ensureUndoRedo(ctx) {
-  const add = (id, label, invoke) => {
+  const add = (id, label, IconCmp, invoke) => {
     if (!ctx.actionService.getAction(id)) {
-      ctx.actionService.registerActions([{
-        id,
-        appearance: { label, cssIcons: [label === 'undo' ? 'undo' : 'repeat'] },
-        invoke
-      }]);
+      ctx.actionService.registerActions([{ id, appearance: { label, icon: IconCmp }, invoke }]);
     }
   };
-  add('Undo', 'undo', app => app.projectService.historyManager && app.projectService.historyManager.undo && app.projectService.historyManager.undo());
-  add('Redo', 'redo', app => app.projectService.historyManager && app.projectService.historyManager.redo && app.projectService.historyManager.redo());
+  add('Undo', 'undo', FaUndo, app => app.projectService.historyManager && app.projectService.historyManager.undo && app.projectService.historyManager.undo());
+  add('Redo', 'redo', FaRedo, app => app.projectService.historyManager && app.projectService.historyManager.redo && app.projectService.historyManager.redo());
 }

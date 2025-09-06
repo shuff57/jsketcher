@@ -2,35 +2,53 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ececec;
-  border: 1px solid #d0d0d0;
-  padding: 2px 6px;
-  border-radius: 4px;
-  margin-bottom: 4px;
+  background: #f7f7f7; /* match ribbon */
+  border: 1px solid #d5d5d5;
+  border-bottom: none; /* merge border with ribbon below */
+  padding: 2px 6px 2px 6px;
+  border-radius: 0; /* remove radiused corners */
+  margin-bottom: 0;
  }
 
  .qaGroup { display: flex; align-items: center; }
-.quickAccessBar :global(.button) {
-    width: 28px; /* uniform square */
-    height: 28px;
-    padding: 0; /* center icon tightly */
-    margin: 2px 3px;
+.qaBtnLarge {
+    width: 34px;
+    height: 34px;
+    padding: 0 !important;
+    margin: 2px 3px !important;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border-radius: 4px;
-    background: #ffe5e5; /* light red */
-    color: #222;
+    border-radius: 6px;
+    background: transparent;
+    color: #333;
+    font-size: 16px;
+    transition: background .15s ease, color .15s ease;
 }
-
-.quickAccessBar :global(.button:hover) {
-    background: #ffcccc !important; /* slightly darker light red */
-    color: #000 !important;
+.qaBtnLarge:hover {
+    background: #333;
+    color: #fff;
 }
-.quickAccessBar :global(.button:hover) {
-    background-color: #333 !important; /* ensure full fill */
-    color: #fff !important;
-}
- .qaSeparator { width:1px; height:18px; background:#c8c8c8; margin:0 4px; }
- .profilePlaceholder { padding:0 8px; font-weight:600; }
+ .qaSeparator { width:1px; height:26px; background:#c8c8c8; margin:0 6px; }
+ .profilePlaceholder { display:none; }
+ .avatarCircle {
+  width:24px;
+  height:24px;
+  margin:2px 3px;
+  border-radius:50%;
+  background:#ddd;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  font-size:16px;
+  color:#333;
+  cursor:pointer;
+  user-select:none;
+  transition:background .15s ease, color .15s ease;
+ }
+ .avatarCircle:hover {
+  background:#333;
+  color:#fff;
+ }
