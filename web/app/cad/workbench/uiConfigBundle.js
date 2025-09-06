@@ -13,15 +13,17 @@ export const BundleName = "@UIConfig";
 
 export function activate(ctx) {
   const {services, streams} = ctx;
-  streams.ui.controlBars.left.value = ['menu.file', 'menu.craft', 'menu.boolean', 'menu.primitives', 'menu.views', 'menu.viewModes', 'Donate', 'GitHub'];
+  // Removed menu.file (moved to QuickAccessToolbar)
+  streams.ui.controlBars.left.value = ['menu.craft', 'menu.boolean', 'menu.primitives', 'menu.views', 'menu.viewModes', 'Donate', 'GitHub'];
   streams.ui.controlBars.right.value = [
     ['Info', {label: null}],
     ['RefreshSketches', {label: null}],
     ['ShowSketches', {label: 'sketches'}], ['DeselectAll', {label: null}], ['ToggleCameraMode', {label: null}]
   ];
 
-  streams.ui.toolbars.headsUpQuickActions.value = ['Save', 'StlExport', 'menu.workbenches'];
-  
+  // Removed Save (now in QuickAccessToolbar)
+  streams.ui.toolbars.headsUpQuickActions.value = ['StlExport', 'menu.workbenches'];
+
   ctx.actionService.registerActions(CoreActions);
   ctx.actionService.registerActions(HistoryActions);
   ctx.actionService.registerActions(UsabilityActions);
@@ -32,4 +34,20 @@ export function activate(ctx) {
   services.ui.registerFloatView('history', OperationHistory, 'Modifications', 'history');
   services.ui.registerFloatView('expressions', Expressions, 'Expressions', 'percent');
   services.ui.registerFloatView('selection', SelectionView, 'Selection', GrSelect);
+
+  ensureUndoRedo(ctx);
+}
+
+function ensureUndoRedo(ctx) {
+  const add = (id, label, invoke) => {
+    if (!ctx.actionService.getAction(id)) {
+      ctx.actionService.registerActions([{
+        id,
+        appearance: { label, cssIcons: [label === 'undo' ? 'undo' : 'repeat'] },
+        invoke
+      }]);
+    }
+  };
+  add('Undo', 'undo', app => app.projectService.historyManager && app.projectService.historyManager.undo && app.projectService.historyManager.undo());
+  add('Redo', 'redo', app => app.projectService.historyManager && app.projectService.historyManager.redo && app.projectService.historyManager.redo());
 }

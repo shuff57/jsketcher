@@ -31,8 +31,8 @@ export default [
   'DATUM_CREATE', 'PLANE', 'EditFace', '-',
       // Craft operations
       'EXTRUDE', 'REVOLVE', 'SWEEP', 'HOLE_TOOL', '-',
-      // Primitive solids
-      'BOX', 'CYLINDER', 'SPHERE', 'TORUS', '-',
+  // Primitive solids (restored)
+  'BOX', 'CYLINDER', 'SPHERE', 'TORUS', '-',
       // Pattern (opens submenu) and mirror
       'menu.pattern', 'MIRROR_BODY'
     ]

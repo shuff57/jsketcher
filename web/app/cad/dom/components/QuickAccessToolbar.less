@@ -1,0 +1,36 @@
+ .quickAccessBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ececec;
+  border: 1px solid #d0d0d0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+ }
+
+ .qaGroup { display: flex; align-items: center; }
+.quickAccessBar :global(.button) {
+    width: 28px; /* uniform square */
+    height: 28px;
+    padding: 0; /* center icon tightly */
+    margin: 2px 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: #ffe5e5; /* light red */
+    color: #222;
+}
+
+.quickAccessBar :global(.button:hover) {
+    background: #ffcccc !important; /* slightly darker light red */
+    color: #000 !important;
+}
+.quickAccessBar :global(.button:hover) {
+    background-color: #333 !important; /* ensure full fill */
+    color: #fff !important;
+}
+ .qaSeparator { width:1px; height:18px; background:#c8c8c8; margin:0 4px; }
+ .profilePlaceholder { padding:0 8px; font-weight:600; }

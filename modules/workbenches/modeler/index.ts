@@ -72,9 +72,6 @@ export const ModelerWorkspace: WorkbenchConfig = {
       "SHELL_TOOL", "FILLET_TOOL", "SCALE_BODY", "DEFEATURE_REMOVE_FACE", "-",
 
       "MIRROR_BODY", "PATTERN_LINEAR", "PATTERN_RADIAL", "MOVE_BODY" ,"-",
-
-      "CYLINDER", "BOX", "CONE", "SPHERE", "TORUS", "-",
-
       "HOLE_TOOL", "-", 'GET_INFO', "IMPORT_MODEL", "DELETE_BODY", "-",
       
       "WIRE_LINE", 'EXPORT_BREP',

@@ -9,6 +9,7 @@ import SelectedModificationInfo from '../../craft/ui/SelectedModificationInfo';
 import CameraControl from './CameraControl';
 import HeadsUpHelper from './HeadsUpHelper';
 import {HeadsUpToolbar} from './HeadsUpToolbar';
+import {QuickAccessToolbar} from './QuickAccessToolbar';
 import {SketchObjectExplorer} from '../../../sketcher/components/SketchObjectExplorer';
 import SketcherMode from '../../sketch/components/SketcherMode';
 import {ConstraintExplorer} from '../../../sketcher/components/ConstraintExplorer';
@@ -37,6 +38,7 @@ export default class View3d extends React.Component {
         
         <div className={ls.mainLayout}>
           <div className={ls.headsUp}>
+            <QuickAccessToolbar />
             <HeadsUpToolbar/>
             <HeadsUpHelper/>
             <PlugableControlBar/>

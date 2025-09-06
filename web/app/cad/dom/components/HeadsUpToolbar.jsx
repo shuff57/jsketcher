@@ -64,6 +64,10 @@ export const HeadsUpToolbar = connect(streams => combine(
           if (i === primitivesIndex && primitivesIndex !== createIndex) {
             return null; // hide primitives group
           }
+          const isHoleOnlyGroup = group.length === 1 && toId(group[0]) === 'HOLE_TOOL';
+          if (isHoleOnlyGroup) {
+            return null; // hide lone hole tool group
+          }
           return <div className={ls.group} key={i}>
             <div className={ls.groupBody}>
               <ToolbarActionButtons actions={group} showTitles={showTitles} />
