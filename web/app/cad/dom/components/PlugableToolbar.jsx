@@ -42,7 +42,8 @@ function ActionButton({label, icon, icon96, icon32, cssIcons, symbol, size = 'la
   const smallOrMedium = size === 'medium' || size === 'small';
   if (icon) {
     const Icon = icon;
-    icon = <Icon size={size}/>;
+    // Let CSS drive scaling for react-icons by omitting explicit size; provide class hook
+    icon = <span className={'action-icon-wrapper size-' + size}><Icon /></span>;
   }
   if (!icon) {
     if (smallOrMedium) {
@@ -50,9 +51,17 @@ function ActionButton({label, icon, icon96, icon32, cssIcons, symbol, size = 'la
         icon = <Fa fa={cssIcons} fw />;
       } else if (icon32) {
         icon = <ImgIcon url={icon32} size={size === 'small' ? 16 : 24} />;
+      } else if (icon96) {
+        // fallback scale-down of 96 asset
+        icon = <ImgIcon url={icon96} size={size === 'small' ? 16 : 24} />;
       }
     } else {
-      icon = <ImgIcon url={icon96} size={48} />;
+      if (icon96) {
+        icon = <ImgIcon url={icon96} size={48} />;
+      } else if (icon32) {
+        // upscale smaller asset if large variant missing
+        icon = <ImgIcon url={icon32} size={32} />;
+      }
     }
   }
   if (!icon) {
@@ -60,7 +69,7 @@ function ActionButton({label, icon, icon96, icon32, cssIcons, symbol, size = 'la
     icon = txtStub ?  <span>{txtStub}</span> : <NoIcon />;
   }
     
-  return <ToolbarButton disabled={!enabled} {...props}>
+  return <ToolbarButton className={'action-btn-size-' + size} disabled={!enabled} {...props}>
     {icon}
     {!(smallOrMedium || noLabel)&& <div>{capitalize(label)}</div>}
   </ToolbarButton>

@@ -22,11 +22,20 @@ function QAButton({actionId}) {
   const Icon = iconMap[actionId];
   return (
     <ActionButtonBehavior actionId={actionId}>
-      {beh => (
-        <div className={ls.qaBtnLarge} title={actionId} {...beh}>
-          {Icon && <Icon size={20} />}
-        </div>
-      )}
+      {beh => {
+        // Avoid passing non-DOM props like invoke to div
+        const {invoke, ...domProps} = beh;
+        return (
+          <div
+            className={ls.qaBtnLarge}
+            title={actionId}
+            onClick={e => invoke && invoke(e)}
+            {...domProps}
+          >
+            {Icon && <Icon /* inherits font-size from parent */ />}
+          </div>
+        );
+      }}
     </ActionButtonBehavior>
   );
 }

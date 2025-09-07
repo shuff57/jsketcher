@@ -29,6 +29,16 @@ export const HeadsUpToolbar = connect(streams => combine(
     streams.ui.toolbars.headsUpShowTitles,
     streams.ui.toolbars.headsUpQuickActions).map(([actions, showTitles, quickActions]) => ({actions, showTitles, quickActions})))(
   function HeadsUpToolbar({actions, showTitles, quickActions}) {
+    const [vw, setVw] = React.useState(typeof window !== 'undefined' ? window.innerWidth : 1920);
+    React.useEffect(() => {
+      function onResize() { setVw(window.innerWidth); }
+      window.addEventListener('resize', onResize);
+      return () => window.removeEventListener('resize', onResize);
+    }, []);
+    let buttonSize = 'large';
+    if (vw <= 1366) buttonSize = 'medium';
+    if (vw <= 1180) buttonSize = 'small';
+    if (vw <= 1024) buttonSize = 'small';
     const groups = splitIntoGroups(actions || []);
     const labels = defaultGroupLabels(groups.length);
     // Heuristically detect special groups to wire label-buttons to menus
@@ -70,93 +80,47 @@ export const HeadsUpToolbar = connect(streams => combine(
           }
           return <div className={ls.group} key={i}>
             <div className={ls.groupBody}>
-              <ToolbarActionButtons actions={group} showTitles={showTitles} />
+              <ToolbarActionButtons actions={group} showTitles={showTitles} size={buttonSize} />
             </div>
       {i === createIndex ? (
               <ActionButtonBehavior actionId={'menu.primitives'}>
-                {behaviourProps => (
-                  <div
+                {beh => {
+                  const {invoke, ...dom} = beh;
+                  return <div
                     className={ls.groupLabelButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      behaviourProps.invoke(menuBelowElementMatchWidthHint(e.currentTarget));
-                    }}
-                  >
-                    CREATE
-                  </div>
-                )}
+                    {...dom}
+                    onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}
+                  >CREATE</div>}}
               </ActionButtonBehavior>
             ) : i === constructIndex ? (
               <ActionButtonBehavior actionId={'menu.construct'}>
-                {behaviourProps => (
-                  <div
-                    className={ls.groupLabelButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      behaviourProps.invoke(menuBelowElementMatchWidthHint(e.currentTarget));
-                    }}
-                  >
-                    CONSTRUCT
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>CONSTRUCT</div>; }}
               </ActionButtonBehavior>
             ) : i === modifyIndex ? (
               <ActionButtonBehavior actionId={'menu.modify'}>
-                {behaviourProps => (
-                  <div
-                    className={ls.groupLabelButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      behaviourProps.invoke(menuBelowElementMatchWidthHint(e.currentTarget));
-                    }}
-                  >
-        MODIFY
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>MODIFY</div>; }}
               </ActionButtonBehavior>
             ) : i === toolsIndex ? (
               <ActionButtonBehavior actionId={'menu.inspect'}>
-                {behaviourProps => (
-                  <div
-                    className={ls.groupLabelButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      behaviourProps.invoke(menuBelowElementMatchWidthHint(e.currentTarget));
-                    }}
-                  >
-                    INSERT
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>INSERT</div>; }}
               </ActionButtonBehavior>
             ) : i === manageIndex ? (
               <ActionButtonBehavior actionId={'menu.insert'}>
-                {behaviourProps => (
-                  <div className={ls.groupLabelButton} {...behaviourProps}>
-                    INSERT
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>INSERT</div>; }}
               </ActionButtonBehavior>
             ) : i === exportIndex ? (
               <ActionButtonBehavior actionId={'menu.export'}>
-                {behaviourProps => (
-                  <div className={ls.groupLabelButton} {...behaviourProps}>
-                    EXPORT
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>EXPORT</div>; }}
               </ActionButtonBehavior>
             ) : i === transformIndex ? (
               <ActionButtonBehavior actionId={'menu.transform'}>
-                {behaviourProps => (
-                  <div
-                    className={ls.groupLabelButton}
-                    onClick={e => {
-                      e.stopPropagation();
-                      behaviourProps.invoke(menuBelowElementMatchWidthHint(e.currentTarget));
-                    }}
-                  >
-                    INSPECT
-                  </div>
-                )}
+                {beh => { const {invoke, ...dom} = beh; return <div className={ls.groupLabelButton} {...dom}
+                  onClick={e => { e.stopPropagation(); invoke && invoke(menuBelowElementMatchWidthHint(e.currentTarget)); }}>INSPECT</div>; }}
               </ActionButtonBehavior>
             ) : (
               <div className={ls.groupLabel}>{labels[i]}</div>
@@ -165,7 +129,7 @@ export const HeadsUpToolbar = connect(streams => combine(
         })}
       </div>
       <div className={ls.quickButtons}>
-        {quickActions.map(actionId => <ConnectedActionButton size='small' key={actionId} actionId={actionId} />)}
+  {quickActions.map(actionId => <ConnectedActionButton size={buttonSize === 'large' ? 'small' : 'small'} key={actionId} actionId={actionId} />)}
       </div>
     </Toolbar>
   }

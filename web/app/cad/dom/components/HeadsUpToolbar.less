@@ -82,8 +82,44 @@
 /* Ensure icon sizes look like compact ribbon buttons */
 .mainActions svg,
 .quickButtons svg {
-  width: 24px;
-  height: 24px;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* wrapper span for react-icons so we can control via font-size */
+.action-icon-wrapper { display:inline-flex; align-items:center; justify-content:center; }
+.action-icon-wrapper.size-small, .action-icon-wrapper.size-medium, .action-icon-wrapper.size-large { font-size:24px; }
+
+@media screen and (max-width: 1366px) { .action-icon-wrapper { font-size:18px; } }
+@media screen and (max-width: 1200px) { .action-icon-wrapper { font-size:16px; } }
+@media screen and (max-width: 1024px) { .action-icon-wrapper { font-size:14px; } }
+@media screen and (max-width: 900px)  { .action-icon-wrapper { font-size:12px; } }
+
+/* Responsive design for laptop and smaller displays (more aggressive scaling) */
+@media screen and (max-width: 1366px) {
+  .mainActions svg,
+  .quickButtons svg { width: 18px !important; height: 18px !important; }
+  .ribbon [class*="button"] { min-width: 40px; padding: 3px 3px; }
+}
+
+@media screen and (max-width: 1200px) {
+  .mainActions svg,
+  .quickButtons svg { width: 16px !important; height: 16px !important; }
+  .ribbon [class*="button"] { min-width: 36px; padding: 3px 3px; }
+}
+
+@media screen and (max-width: 1024px) {
+  .mainActions svg,
+  .quickButtons svg { width: 14px !important; height: 14px !important; }
+  .ribbon [class*="button"] { min-width: 32px; padding: 2px 2px; }
+  .groupLabel, .groupLabelButton { font-size: 9px; }
+}
+
+@media screen and (max-width: 900px) {
+  .mainActions svg,
+  .quickButtons svg { width: 12px !important; height: 12px !important; }
+  .ribbon [class*="button"] { min-width: 26px; padding: 2px 2px; margin:1px 2px; }
+  .groupLabel, .groupLabelButton { font-size: 8px; }
 }
 
 /* Tile-like buttons inside ribbon */
@@ -94,8 +130,13 @@
   justify-content: center;
   min-width: 48px;
   padding: 4px 4px;
-  margin: 2px 4px;
+  margin: 2px 3px;
 }
+
+/* explicit size classes for dynamic sizing logic */
+.action-btn-size-large { /* large uses default metrics */ }
+.action-btn-size-medium { /* medium variant tighten padding */ padding:3px 3px !important; }
+.action-btn-size-small { /* small variant minimal padding */ padding:2px 2px !important; }
 
 .ribbon [class*="button"] > div:last-child {
   font-size: 10px;
@@ -107,5 +148,17 @@
 .ribbon [class*="splitter"] {
   background-color: #d8d8d8;
   margin: 0 8px;
+}
+
+@media screen and (max-width: 780px) {
+  .ribbon [class*="button"] { min-width: 24px; padding: 1px 2px; margin:1px 1px; }
+  .mainActions svg, .quickButtons svg { width: 11px !important; height: 11px !important; }
+  .groupLabel, .groupLabelButton { font-size:7px; }
+}
+
+@media screen and (max-width: 640px) {
+  .ribbon [class*="button"] { min-width: 22px; padding: 1px 1px; margin:1px 1px; }
+  .mainActions svg, .quickButtons svg { width: 10px !important; height: 10px !important; }
+  .groupLabel, .groupLabelButton { font-size:6.5px; }
 }
 

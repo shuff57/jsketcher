@@ -95,7 +95,11 @@ export function activate(context: ApplicationContext) {
     }
   }
 
-  context.actionService = {run, registerAction, registerActions, showHintFor, appearanceStreams, stateStreams, hint$};
+  function getAction(id: string) {
+    return runners[id];
+  }
+
+  context.actionService = {run, registerAction, registerActions, showHintFor, appearanceStreams, stateStreams, hint$, getAction} as any;
 
   context.services.action = context.actionService;
 }
@@ -149,6 +153,7 @@ export interface ActionService {
   registerAction(action: ActionDefinition): void;
   registerActions(actions: ActionDefinition[]): void;
   showHintFor(request: HintRequest): void;
+  getAction(id: string): any;
 
   appearanceStreams: ActionAppearanceStreams;
   stateStreams: ActionStateStreams;

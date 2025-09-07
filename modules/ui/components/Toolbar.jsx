@@ -13,7 +13,9 @@ export default function Toolbar({children, className, size, medium, vertical, fl
 }
 
 export function ToolbarButton({children, disabled, className, ...props}) {
-  return <div className={cx(ls.button, disabled && ls.disabled, className)} {...props}>
+  // Filter out any action-behavior props that should not land on a DOM element
+  const {invoke, appearanceStreams, stateStreams, hint$, ...domProps} = props;
+  return <div className={cx(ls.button, disabled && ls.disabled, className)} {...domProps}>
     {children}
   </div>;
 }

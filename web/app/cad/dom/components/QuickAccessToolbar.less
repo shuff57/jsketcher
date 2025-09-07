@@ -23,8 +23,9 @@
     border-radius: 6px;
     background: transparent;
     color: #333;
-    font-size: 16px;
-    transition: background .15s ease, color .15s ease;
+    font-size: 18px; /* base icon size (react-icons inherit font-size when no explicit size prop) */
+    line-height: 1;
+    transition: background .15s ease, color .15s ease, font-size .15s ease, width .15s ease, height .15s ease;
 }
 .qaBtnLarge:hover {
     background: #333;
@@ -52,3 +53,17 @@
   background:#333;
   color:#fff;
  }
+
+/* Responsive scaling for quick access buttons */
+@media screen and (max-width: 1366px) {
+    .qaBtnLarge { width: 32px; height: 32px; font-size: 16px; }
+    .avatarCircle { width:22px; height:22px; font-size:14px; }
+}
+@media screen and (max-width: 1200px) {
+    .qaBtnLarge { width: 30px; height: 30px; font-size: 15px; }
+    .avatarCircle { width:20px; height:20px; font-size:13px; }
+}
+@media screen and (max-width: 1024px) {
+    .qaBtnLarge { width: 28px; height: 28px; font-size: 14px; }
+    .avatarCircle { width:18px; height:18px; font-size:12px; }
+}
